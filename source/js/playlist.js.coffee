@@ -62,16 +62,13 @@ class window.Playlist
         # skip song here
         @playNextTrack()
     
+    @displayTimer secondsLeft
     @timeouts.push window.setTimeout(playTimer, refreshInterval)
 
   displayTimer: (secondsLeft) ->
-    percentage = secondsLeft * 100.0 / @app.threshold
-    if secondsLeft > 0
-      $("#time-remaining > h4").html '' + secondsLeft + " seconds left"
-      $('.progress > .bar').css('width', percentage + '%')
-    else
-      $("#time-remaining > h4").html ''
-      $('.progress > .bar').css('width', '0%')
+    val = @app.threshold - secondsLeft
+    $('.dial').val(val).trigger('change')
+
   renderCurrentTrack: ->
     track = @tracks[@currentTrack]
     $("#current-track").html(track.name + ' by ' + track.album.artist.name)

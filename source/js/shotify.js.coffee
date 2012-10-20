@@ -53,3 +53,8 @@ $ ->
 
   # store original img src
   $('#album-art').data('original-src', $('#album-art').attr('src'))
+  $(".dial").knob
+    'max': app.threshold
+    'readOnly': true
+    'width': 100
+    'height': 100

@@ -73,41 +73,27 @@ h2 {
     display: none;
   }
   #tracks-info {
-    display: none;
+     display: none;
   }
 }
 .after-drop {
-  .playlist-dropper, #time-remaining {
+  .playlist-dropper {
     display: none;
-  }
-  &.playing {
-    #time-remaining {
-      display: block;
-    }
   }
 }
 #tracks-container {
   text-align: left;
   border: 2px solid #222;
-  height: 300px;
+  height: 350px;
   overflow: auto;
   background-color: #444;
   padding: 10px;
 }
-#time-remaining {
-  position: relative;
-  height: 20px;
-  > h4 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 1000;
-    line-height: 0;
-    height: 10px;
-  }
-}
+
 #drop-another {
   margin-top: 20px;
+}
+.dial {
+  color: red;
+  z-index: 2000;
 }
