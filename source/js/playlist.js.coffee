@@ -33,25 +33,38 @@ class window.Playlist
   playCurrentTrack: ->
     # display track name
     track = @tracks[@currentTrack]
-    console.log "play track ", @currentTrack, track.uri
-    @app.player.playTrack track.uri
-    @renderCurrentTrack()
+    if track
+      console.log "play track ", @currentTrack, track.uri
+      # TODO allow playing from other position, not just from start
+      @app.player.playTrack track.uri
+      @renderCurrentTrack()
 
     startTime = new Date().getTime()
-    timer = window.setInterval =>
-      currTime = new Date().getTime()
-      timePassed = (currTime - startTime) / 1000
-      secondsLeft =  Math.ceil @app.threshold - timePassed
+    secondsLeft = @app.threshold
+    refreshInterval = 1000
 
-      if timePassed < @app.threshold
-        $("#time-remaining").html('' + secondsLeft + " seconds left")
+    pauseTimer = =>
+      if @app.pausing
+        # keep track of how long it's pausing
+        setTimeout pauseTimer, refreshInterval
       else
-        # threshold reached, next song
-        console.log "time passed reached ", timePassed
+        setTimeout playTimer, refreshInterval
+
+    playTimer = =>
+      if secondsLeft > 0
+        $("#time-remaining").html('' + secondsLeft + " seconds left")
+        secondsLeft -= 1
+        if @app.pausing
+          # do something
+          setTimeout pauseTimer, refreshInterval
+        else
+          setTimeout playTimer, refreshInterval
+      else
+        # skip to next song
         # skip song here
-        window.clearInterval(timer)
         @playNextTrack()
-    , 100
+    
+    window.setTimeout playTimer, refreshInterval
 
   renderCurrentTrack: ->
     track = @app.player.track

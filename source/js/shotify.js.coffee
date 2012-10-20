@@ -17,9 +17,17 @@ window.app =
       @library = @models.library
       @application = @models.application
       # @playerImage = new views.Player()
+      # init playlist drop
+
+      @models.player.observe @models.EVENT.CHANGE, (event) =>
+        # updatePageWithTrackDetails() if event.data.curtrack
+        if @models.player.playing
+          @pausing = false
+        else
+          @pausing = true
+      @models.player.playing = false
     else
       console.log "Sorry -- only work in Spotify"
-    # init playlist drop
     @playlist_drop = new PlaylistDrop("#playlist_drop")
 
 $ ->
