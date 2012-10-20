@@ -1,7 +1,7 @@
 class window.PlaylistDrop
   # bind events
-  constructor: (app, selector) ->
-    @app = app
+  constructor: (selector) ->
+    @app = window.app
     @el = $(selector)
     @el.bind 'dragenter', (event) =>
       console.log "Drag Enter"
@@ -24,17 +24,24 @@ class window.PlaylistDrop
       @el.removeClass('over')
       @watchDropping(uri)
 
+    $(document).on 'playlistLoaded', =>
+      console.log "receiving playlistLoaded"
+      @updatePlaylistView()
+
     console.log "Created playlist " + @el.prop('nodeName') + '#' + @el.prop('id')
 
   # provide callback to set current playlist
   watchDropping: (uri) ->
-    @app.models.Playlist.fromURI uri, (sp_playlist) =>
-      @currentPlaylist = new window.Playlist(app, sp_playlist)
-      @updatePlaylistView()
+    @currentPlaylist = new window.Playlist(uri)
+    console.log "setting currentPlaylist = ", @currentPlaylist
+    @updatePlaylistView()
 
   updatePlaylistView: ->
-    # update playlist name
-    $("#current-playlist").html(@currentPlaylist.name())
-    # display Play button
-    $("#play-button").show()
-    # update items in playlist
+    if @currentPlaylist
+      console.log 'updatePlaylistView on ', @currentPlaylist
+      # update playlist name
+      $("#current-playlist").html(@currentPlaylist.name())
+      # display Play button
+      $("#play-button").show()
+      # update items in playlist
+      $("#tracks-container").html(@currentPlaylist.render().el)

@@ -1,16 +1,24 @@
 class window.Playlist
-  constructor: (app, sp_playlist) ->
-    @app = app
-    @sp_playlist = sp_playlist
-    @sp_track_uris = sp_playlist.data.all()
+  constructor: (uri) ->
+    @app = window.app
+    @object = @app.sp.core.getPlaylist(uri)
+
     @loadTracks()
+    @el = $('<ul></ul>')
+    console.log 'set el as ', @el
+
   name: ->
-    @sp_playlist.name
+    @object.name
+
   loadTracks: ->
     @tracks = []
-    for uri in @sp_track_uris
-      console.log "loading track", uri
-      @app.models.Track.fromURI uri, (track) =>
-        console.log "appending ", track.name
-        @tracks.push track
+    console.log "num tracks", @object.length
+    for i in [0...@object.length]
+      @tracks.push @object.getTrack(i)
+    console.log @tracks
 
+  render: ->
+    console.log "rendering ", @tracks
+    for track in @tracks
+      @el.append "<li>" + track.name + "</li>"
+    this

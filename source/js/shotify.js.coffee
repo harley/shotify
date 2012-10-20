@@ -19,7 +19,7 @@ window.app =
     else
       alert "Sorry -- only work in Spotify"
     # init playlist drop
-    @playlist_drop = new PlaylistDrop(app, "#playlist_drop")
+    @playlist_drop = new PlaylistDrop("#playlist_drop")
 
 $ ->
   window.app.setup()
