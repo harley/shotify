@@ -22,7 +22,7 @@ class window.PlaylistDrop
       uri = event.dataTransfer.getData('Text')
       console.log "DROPPED: " + uri
       @el.removeClass('over')
-      @el.parents('.container').removeClass('before-drop').addClass('after-drop')
+      $('.container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
 
     console.log "Created playlist " + @el.prop('nodeName') + '#' + @el.prop('id')

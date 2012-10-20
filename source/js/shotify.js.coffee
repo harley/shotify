@@ -33,14 +33,20 @@ window.app =
 $ ->
   app.setup()
   $('#play-button').click ->
-    console.log "clicking, playlist = ", app.playlist
     if app.playlist
+      $('.container').addClass('playing')
       # app.playlist.hide()
       app.playlist.playRandom()
+      # hide play button
+      $(this).hide()
+      # show progress bar
+      $('.progress').show()
+      $('#drop-another').show()
     else
       alert "Error: Playlist not loaded yet!"
-    # hide play button
-    $(this).hide()
-    # show progress bar
-    $('.progress').show()
     return false
+  $('#drop-another').click ->
+    # display playlist-dropper and hide current tracks info
+    $('.container').removeClass('after-drop playing').addClass('before-drop')
+    $(this).hide()
+    app.playlist.stop()

@@ -40,12 +40,14 @@ class window.Playlist
     secondsLeft = @app.threshold
     refreshInterval = 1000
 
+    @timeouts = []
+
     pauseTimer = =>
       if @app.pausing
         # keep track of how long it's pausing
-        setTimeout pauseTimer, refreshInterval
+        @timeouts.push setTimeout(pauseTimer, refreshInterval)
       else
-        setTimeout playTimer, refreshInterval
+        @timeouts.push(setTimeout playTimer, refreshInterval)
 
     playTimer = =>
       if secondsLeft > 0
@@ -53,15 +55,15 @@ class window.Playlist
         secondsLeft -= 1
         if @app.pausing
           # do something
-          setTimeout pauseTimer, refreshInterval
+          @timeouts.push setTimeout(pauseTimer, refreshInterval)
         else
-          setTimeout playTimer, refreshInterval
+          @timeouts.push setTimeout(playTimer, refreshInterval)
       else
         # skip to next song
         # skip song here
         @playNextTrack()
     
-    window.setTimeout playTimer, refreshInterval
+    @timeouts.push window.setTimeout(playTimer, refreshInterval)
 
   displayTimer: (secondsLeft) ->
     $("#time-remaining > h4").html('' + secondsLeft + " seconds left")
@@ -75,4 +77,8 @@ class window.Playlist
     $('#album-art').attr('src', track.album.cover).show()
     # display time
     # play track
-
+  stop: ->
+    @app.player.playing = false
+    for timeout in @timeouts
+      clearTimeout timeout
+    @timeouts = []
