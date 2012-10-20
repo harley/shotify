@@ -17,7 +17,6 @@ class window.Playlist
       @tracks.push @object.getTrack(i)
 
   render: ->
-    console.log "rendering ", @tracks
     for track in @tracks
       @el.append "<li>" + track.name + "</li>"
     this
@@ -67,8 +66,11 @@ class window.Playlist
 
   displayTimer: (secondsLeft) ->
     $("#time-remaining > h4").html('' + secondsLeft + " seconds left")
-    percentage = (@app.threshold - secondsLeft + 1) * 100.0 / @app.threshold
+    percentage = (secondsLeft - 1) * 100.0 / @app.threshold
     $('.progress > .bar').css('width', percentage + '%')
+  hideTimer: ->
+    $('.progress').hide()
+    $('.progress > .bar').hide()
   renderCurrentTrack: ->
     track = @tracks[@currentTrack]
     $("#current-track").html(track.name + ' by ' + track.album.artist.name)
@@ -77,8 +79,12 @@ class window.Playlist
     $('#album-art').attr('src', track.album.cover).show()
     # display time
     # play track
-  stop: ->
+  reset: ->
     @app.player.playing = false
     for timeout in @timeouts
       clearTimeout timeout
     @timeouts = []
+
+    # reset progress bar
+    @hideTimer()
+    @tracks = []
