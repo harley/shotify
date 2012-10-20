@@ -50,8 +50,8 @@ class window.Playlist
 
     playTimer = =>
       if secondsLeft > 0
-        @displayTimer secondsLeft
         secondsLeft -= 1
+        @displayTimer secondsLeft
         if @app.pausing
           # do something
           @timeouts.push setTimeout(pauseTimer, refreshInterval)
@@ -65,11 +65,13 @@ class window.Playlist
     @timeouts.push window.setTimeout(playTimer, refreshInterval)
 
   displayTimer: (secondsLeft) ->
-    $("#time-remaining > h4").html('' + secondsLeft + " seconds left")
-    percentage = (secondsLeft - 1) * 100.0 / @app.threshold
-    $('.progress > .bar').css('width', percentage + '%')
-  hideTimer: ->
-    console.log "TODO"
+    percentage = secondsLeft * 100.0 / @app.threshold
+    if secondsLeft > 0
+      $("#time-remaining > h4").html '' + secondsLeft + " seconds left"
+      $('.progress > .bar').css('width', percentage + '%')
+    else
+      $("#time-remaining > h4").html ''
+      $('.progress > .bar').css('width', '100%')
   renderCurrentTrack: ->
     track = @tracks[@currentTrack]
     $("#current-track").html(track.name + ' by ' + track.album.artist.name)
@@ -87,3 +89,4 @@ class window.Playlist
     # reset progress bar
     @tracks = []
     $('#album-art').attr('src', $('#album-art').data('original-src'))
+    @displayTimer 0
