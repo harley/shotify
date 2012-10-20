@@ -71,7 +71,7 @@ class window.Playlist
       $('.progress > .bar').css('width', percentage + '%')
     else
       $("#time-remaining > h4").html ''
-      $('.progress > .bar').css('width', '100%')
+      $('.progress > .bar').css('width', '0%')
   renderCurrentTrack: ->
     track = @tracks[@currentTrack]
     $("#current-track").html(track.name + ' by ' + track.album.artist.name)
