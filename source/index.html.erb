@@ -12,21 +12,25 @@ title: Shotify
     </div>
   </div>
   <div style="clear:both"></div>
-  <div id="album-art-container" class="center">
-    <div class="thumbnail">
-      <%= image_tag "music_shot.jpg", id: 'album-art' %>
-    </div>
-  </div>
   <div class="row-fluid">
     <div class="span6">
+      <div id="album-art-container" class="center">
+        <div class="thumbnail">
+          <%= image_tag "music_shot.jpg", id: 'album-art' %>
+        </div>
+      </div>
       <h4 class="main-line">
         <span id='current-playlist'></span>
         <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
       </h4>
       <h4 id="current-track">
       </h4>
-      <h4 id="time-remaining">
-      </h4>
+      <div id="time-remaining">
+        <div class="progress progress-striped active" style="display:none">
+          <div class="bar" style="width: 0%"></div>
+        </div>
+        <h4></h4>
+      </div>
     </div>
     <div class="span6">
       <div id="tracks-container">

@@ -39,5 +39,8 @@ $ ->
       app.playlist.playRandom()
     else
       alert "Error: Playlist not loaded yet!"
+    # hide play button
     $(this).hide()
+    # show progress bar
+    $('.progress').show()
     return false

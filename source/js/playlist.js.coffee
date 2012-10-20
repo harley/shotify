@@ -5,9 +5,7 @@ class window.Playlist
 
     @loadTracks()
     @el = $('<ol></ol>')
-    console.log 'set el as ', @el
     @app.playlist = this
-    console.log "setting playlist as ", @app.playlist
 
   name: ->
     @object.name
@@ -17,7 +15,6 @@ class window.Playlist
     console.log "num tracks", @object.length
     for i in [0...@object.length]
       @tracks.push @object.getTrack(i)
-    console.log @tracks
 
   render: ->
     console.log "rendering ", @tracks
@@ -52,7 +49,7 @@ class window.Playlist
 
     playTimer = =>
       if secondsLeft > 0
-        $("#time-remaining").html('' + secondsLeft + " seconds left")
+        @displayTimer secondsLeft
         secondsLeft -= 1
         if @app.pausing
           # do something
@@ -66,8 +63,12 @@ class window.Playlist
     
     window.setTimeout playTimer, refreshInterval
 
+  displayTimer: (secondsLeft) ->
+    $("#time-remaining > h4").html('' + secondsLeft + " seconds left")
+    percentage = (@app.threshold - secondsLeft + 1) * 100.0 / @app.threshold
+    $('.progress > .bar').css('width', percentage + '%')
   renderCurrentTrack: ->
-    track = @app.player.track
+    track = @tracks[@currentTrack]
     $("#current-track").html(track.name + ' by ' + track.album.artist.name)
     console.log "album cover", track.album.cover
     # display album art

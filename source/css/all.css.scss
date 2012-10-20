@@ -86,3 +86,17 @@ h2 {
   background-color: #444;
   padding: 10px;
 }
+#time-remaining {
+  position: relative;
+  height: 20px;
+  > h4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    line-height: 0;
+    height: 10px;
+  }
+}
