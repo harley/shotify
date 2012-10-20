@@ -1,0 +1,16 @@
+{
+    "AcceptedLinkTypes" : [
+        "playlist"
+    ],
+    "BundleType": "Application",
+    "BundleIdentifier": "shotify",
+    "AppIcon": {
+        "36x18": "shotify.png"
+    },
+    "AppName": {
+        "en": "Shotify"
+    },
+    "SupportedLanguages": [
+        "en"
+    ]
+}
