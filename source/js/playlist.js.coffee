@@ -69,8 +69,7 @@ class window.Playlist
     percentage = (secondsLeft - 1) * 100.0 / @app.threshold
     $('.progress > .bar').css('width', percentage + '%')
   hideTimer: ->
-    $('.progress').hide()
-    $('.progress > .bar').hide()
+    console.log "TODO"
   renderCurrentTrack: ->
     track = @tracks[@currentTrack]
     $("#current-track").html(track.name + ' by ' + track.album.artist.name)
@@ -86,5 +85,5 @@ class window.Playlist
     @timeouts = []
 
     # reset progress bar
-    @hideTimer()
     @tracks = []
+    $('#album-art').attr('src', $('#album-art').data('original-src'))

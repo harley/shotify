@@ -77,8 +77,13 @@ h2 {
   }
 }
 .after-drop {
-  .playlist-dropper {
+  .playlist-dropper, #time-remaining {
     display: none;
+  }
+  &.playing {
+    #time-remaining {
+      display: block;
+    }
   }
 }
 #tracks-container {

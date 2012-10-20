@@ -50,3 +50,6 @@ $ ->
     $('.container').removeClass('after-drop playing').addClass('before-drop')
     $(this).hide()
     app.playlist.reset()
+
+  # store original img src
+  $('#album-art').data('original-src', $('#album-art').attr('src'))
