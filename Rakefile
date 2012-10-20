@@ -1,4 +1,5 @@
 APP_NAME = 'shotify'
+APP_ON_DROPBOX = "~/Dropbox/shared/vampirehackathon/#{APP_NAME}"
 
 desc "Build the website from source"
 task :build do
@@ -21,4 +22,11 @@ end
 
 desc "Shot: Build and deploy website"
 task :shot => [:build, :deploy] do
+end
+
+desc "Deploy to dropbox"
+task :dropbox do
+  puts "## Copying to Dropbox at #{APP_ON_DROPBOX}"
+  status = system("mkdir -p #{APP_ON_DROPBOX} && cp -Rf build/* #{APP_ON_DROPBOX}")
+  puts status ? "OK" : "FAILED"
 end

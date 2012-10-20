@@ -24,6 +24,7 @@ class window.PlaylistDrop
       @el.removeClass('over')
       $('.container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
+      @el.find('h4').html('Drop Playlist Here')
 
     console.log "Created playlist " + @el.prop('nodeName') + '#' + @el.prop('id')
 
