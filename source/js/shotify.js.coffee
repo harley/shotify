@@ -13,6 +13,7 @@ if typeof(getSpotifyApi) == 'function'
   playerImage = new views.Player()
 
 class Playlist
+  # bind events
   constructor: (selector) ->
     @drop = $(selector)
     @drop.bind 'dragenter', (event) =>
@@ -38,12 +39,25 @@ class Playlist
 
     console.log "Created playlist "+@drop.prop('nodeName')+'#'+@drop.prop('id')
 
+  # provide callback to set current playlist
   setupPlaylist: (uri) ->
     models.Playlist.fromURI(uri, @handlePlaylistLoaded)
 
+  setCurrent: (playlist) ->
+    @current = playlist
+    console.log "setting current to be ", @current
+    @updatePlaylistView()
+
+  updatePlaylistView: ->
+    # update playlist name
+    $("#current-playlist").html(@current.name)
+    # display Play button
+    $("#play-button").show();
+    # update items in playlist
+
   handlePlaylistLoaded: (playlist) =>
+    window.playlist.setCurrent playlist
     console.log('Playlist loaded', playlist.name);
-    @drop.find("h4").html(playlist.name)
 
 $ ->
   window.playlist = new Playlist("#playlist_drop")

@@ -3,8 +3,8 @@
 body {
   margin: 30px;
   padding: 20px;
-  border: 1px solid #333;
-  background-color: #222;
+  border: 1px solid #444;
+  background-color: #333;
   border-radius: 20px;
   text-align: center;
   color: #777;
@@ -42,4 +42,16 @@ h2 {
     background-color: #666;
     background: -webkit-radial-gradient(center, ellipse cover, #777 0%, #444 80%); 
   }
+}
+
+.logo-container {
+  height: 50px;
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.main-line {
+  text-align: center;
 }
