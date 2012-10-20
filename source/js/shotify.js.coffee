@@ -6,6 +6,7 @@ jQuery.event.props.push("dataTransfer")
 
 window.app = 
   setup: ->
+    app.threshold = 6 # number of seconds to play each track
     # Initialize Spotify API
     if typeof(getSpotifyApi) == 'function'
       @sp = getSpotifyApi(1)
@@ -22,4 +23,12 @@ window.app =
     @playlist_drop = new PlaylistDrop("#playlist_drop")
 
 $ ->
-  window.app.setup()
+  app.setup()
+  $('#play-button').click ->
+    console.log "clicking, playlist = ", app.playlist
+    if app.playlist
+      # app.playlist.hide()
+      app.playlist.playRandom()
+    else
+      alert "Error: Playlist not loaded yet!"
+    return false

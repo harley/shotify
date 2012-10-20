@@ -9,11 +9,16 @@ title: Shotify
   <div class="center playlist-dropper">
     <div id="playlist_drop">
       <h4>Drop Playlist Here</h4>
+      <img id='album-art' src="" style="display:none" />
     </div>
   </div>
   <h4 class="main-line">
     <span id='current-playlist'></span>
     <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
+  </h4>
+  <h4 id="current-track">
+  </h4>
+  <h4 id="time-remaining">
   </h4>
   <div id="tracks-container">
   </div>
