@@ -4,7 +4,7 @@ class window.Playlist
     @object = @app.sp.core.getPlaylist(uri)
 
     @loadTracks()
-    @el = $('<ul></ul>')
+    @el = $('<ol></ol>')
     console.log 'set el as ', @el
     @app.playlist = this
     console.log "setting playlist as ", @app.playlist

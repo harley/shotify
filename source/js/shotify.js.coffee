@@ -18,7 +18,7 @@ window.app =
       @application = @models.application
       # @playerImage = new views.Player()
     else
-      alert "Sorry -- only work in Spotify"
+      console.log "Sorry -- only work in Spotify"
     # init playlist drop
     @playlist_drop = new PlaylistDrop("#playlist_drop")
 
@@ -31,4 +31,5 @@ $ ->
       app.playlist.playRandom()
     else
       alert "Error: Playlist not loaded yet!"
+    $(this).hide()
     return false

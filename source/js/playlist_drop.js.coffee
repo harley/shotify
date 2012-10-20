@@ -3,30 +3,27 @@ class window.PlaylistDrop
   constructor: (selector) ->
     @app = window.app
     @el = $(selector)
-    @el.bind 'dragenter', (event) =>
-      console.log "Drag Enter"
+    @el.on 'dragenter', (event) =>
       @el.addClass('over')
+      @el.find('h4').html('Ready?')
 
-    @el.bind 'dragover', (event) =>
+    @el.on 'dragover', (event) =>
       event.preventDefault()
       # Required so the drop is accepted.
       event.dataTransfer.dropEffect = 'copy'
       false
 
-    @el.bind 'dragleave', (event) =>
+    @el.on 'dragleave', (event) =>
       console.log "Drag Leave"
       @el.removeClass('over')
+      @el.find('h4').html('Drop Playlist Here')
 
-    @el.bind 'drop', (event) =>
-      console.log "DROP THE BEAT"
+    @el.on 'drop', (event) =>
       uri = event.dataTransfer.getData('Text')
-      console.log "DROPPED: "+uri
+      console.log "DROPPED: " + uri
       @el.removeClass('over')
+      @el.parents('.container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
-
-    $(document).on 'playlistLoaded', =>
-      console.log "receiving playlistLoaded"
-      @updatePlaylistView()
 
     console.log "Created playlist " + @el.prop('nodeName') + '#' + @el.prop('id')
 
@@ -40,7 +37,7 @@ class window.PlaylistDrop
     if @currentPlaylist
       console.log 'updatePlaylistView on ', @currentPlaylist
       # update playlist name
-      $("#current-playlist").html(@currentPlaylist.name())
+      $("#current-playlist").html('Playlist: ' + @currentPlaylist.name())
       # display Play button
       $("#play-button").show()
       # update items in playlist

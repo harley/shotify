@@ -2,24 +2,35 @@
 title: Shotify
 ---
 
-<div class="welcome">
+<div class="before-drop container">
   <div class="logo-container">
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logo_alternate.png" %>
   </div>
   <div class="center playlist-dropper">
     <div id="playlist_drop">
       <h4>Drop Playlist Here</h4>
-      <img id='album-art' src="" style="display:none" />
     </div>
   </div>
-  <h4 class="main-line">
-    <span id='current-playlist'></span>
-    <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
-  </h4>
-  <h4 id="current-track">
-  </h4>
-  <h4 id="time-remaining">
-  </h4>
-  <div id="tracks-container">
+  <div style="clear:both"></div>
+  <div id="album-art-container" class="center">
+    <div class="thumbnail">
+      <%= image_tag "music_shot.jpg", id: 'album-art' %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span6">
+      <div id="tracks-container">
+      </div>
+    </div>
+    <div class="span6">
+      <h4 class="main-line">
+        <span id='current-playlist'></span>
+        <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
+      </h4>
+      <h4 id="current-track">
+      </h4>
+      <h4 id="time-remaining">
+      </h4>
+    </div>
   </div>
 </div><!-- .welcome -->

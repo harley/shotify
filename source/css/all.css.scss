@@ -55,3 +55,34 @@ h2 {
 .main-line {
   text-align: center;
 }
+
+#album-art-container {
+  width: 220px;
+  height: 220px;
+  background-color: #444;
+  border: 2px solid #888;
+  img {
+    width: 100%;
+  }
+}
+.before-drop {
+  #album-art-container{
+    display: none;
+  }
+  #tracks-container {
+    display: none;
+  }
+}
+.after-drop {
+  .playlist-dropper {
+    display: none;
+  }
+}
+#tracks-container {
+  text-align: left;
+  border: 2px solid #222;
+  height: 300px;
+  overflow: auto;
+  background-color: #444;
+  padding: 10px;
+}
