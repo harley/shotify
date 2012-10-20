@@ -12,31 +12,38 @@ if typeof(getSpotifyApi) == 'function'
   application = models.application
   playerImage = new views.Player()
 
-Playlist = (selector) ->
-  @drop = $(selector)
-  @playlist = null
-  console.log "Created playlist "+@drop.prop('nodeName')+'#'+@drop.prop('id')
-  # Bind drag-and-drop event handlers
-  @drop.bind 'dragenter', (event) =>
-    console.log "Drag Enter"
-    @drop.addClass('over')
+class Playlist
+  constructor: (selector) ->
+    @drop = $(selector)
+    @drop.bind 'dragenter', (event) =>
+      console.log "Drag Enter"
+      @drop.addClass('over')
 
-  @drop.bind 'dragover', (event) =>
-    event.preventDefault()
-    # Required so the drop is accepted.
-    event.dataTransfer.dropEffect = 'copy'
-    false
+    @drop.bind 'dragover', (event) =>
+      event.preventDefault()
+      # Required so the drop is accepted.
+      event.dataTransfer.dropEffect = 'copy'
+      false
 
-  @drop.bind 'dragleave', (event) =>
-    console.log "Drag Leave"
-    @drop.removeClass('over')
+    @drop.bind 'dragleave', (event) =>
+      console.log "Drag Leave"
+      @drop.removeClass('over')
 
-  @drop.bind 'drop', (event) =>
-    console.log "DROP THE BEAT"
-    uri = event.dataTransfer.getData('Text')
-    console.log "DROPPED: "+uri
-    @drop.removeClass('over')
-    this.setupPlaylist(uri)
+    @drop.bind 'drop', (event) =>
+      console.log "DROP THE BEAT"
+      uri = event.dataTransfer.getData('Text')
+      console.log "DROPPED: "+uri
+      @drop.removeClass('over')
+      this.setupPlaylist(uri)
+
+    console.log "Created playlist "+@drop.prop('nodeName')+'#'+@drop.prop('id')
+
+  setupPlaylist: (uri) ->
+    models.Playlist.fromURI(uri, @handlePlaylistLoaded)
+
+  handlePlaylistLoaded: (playlist) =>
+    console.log('Playlist loaded', playlist.name);
+    @drop.find("h4").html(playlist.name)
 
 $ ->
-  new Playlist("#playlist_drop")
+  window.playlist = new Playlist("#playlist_drop")
