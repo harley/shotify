@@ -2,18 +2,41 @@
 <html>
   <head>
     <meta charset="utf-8">
-
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= data.page.title || "The Middleman" %></title>
-
-    <%= stylesheet_link_tag "bootstrap.min", "all" %>
+    <%= stylesheet_link_tag "bootstrap.min" %>
+    <%= stylesheet_link_tag 'sp://import/css/adam.css', :cache => true %>
+    <%= stylesheet_link_tag "all" %>
     <%= javascript_include_tag  "all" %>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-35749913-1']);
+      _gaq.push(['_setDomainName', 'shotify.us']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
 
   <body class="<%= page_classes %>">
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="header">
+        <div class="logo-container">
+          <%= link_to image_tag("logo_alternate.png"), "spotify:app:shotify" %>
+        </div>
+      </div>
+      <div class="round-box">
+        <%= yield %>
+      </div>
+      <div class="clear:both"><div>
+      <div class="footer">
+        <%= link_to "shotify.us", "http://spotify.us" %>
+      </div>
+    </div>
   </body>
 </html>

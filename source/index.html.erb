@@ -2,23 +2,20 @@
 title: Shotify
 ---
 
-<div class="before-drop container">
-  <div class="logo-container">
-    <%= link_to image_tag("logo_alternate.png"), "http://shotify.us" %>
-  </div>
+<div class="before-drop main-container">
   <div class="center playlist-dropper">
     <div id="playlist_drop">
       <h4>Drop Playlist Here</h4>
     </div>
   </div>
   <div class="setting">
-    <p>
-      How long would you like to play each track for?<br>
-      Use the click wheel to set the number of seconds
-    </p>
-    <input type="text" class="num_seconds" value="60" data-width="200" data-height="200"
-           data-max="120" data-min="1"
-           data-cursor="true" data-fgColor="#e5a355"/>
+    <label for="num_seconds">
+      How long would you like to each each track for?<br>
+      Use the click wheel to set the duration (in seconds)
+    </label>
+    <input type="text" class="num_seconds knob" value="60" id="num_seconds"
+    data-max="120" data-min="1"
+    data-cursor="true" data-fgColor="#e5a355"/>
   </div>
   <div style="clear:both"></div>
   <div id='tracks-info'>

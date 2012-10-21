@@ -35,7 +35,7 @@ $ ->
   app.setup()
   $('#play-button').click ->
     if app.playlist
-      $('.container').addClass('playing')
+      $('.main-container').addClass('playing')
       # app.playlist.hide()
       app.playlist.playRandom()
       # hide play button
@@ -49,7 +49,7 @@ $ ->
     return false
   $('#drop-another').click ->
     # display playlist-dropper and hide current tracks info
-    $('.container').removeClass('after-drop playing').addClass('before-drop')
+    $('.main-container').removeClass('after-drop playing').addClass('before-drop')
     $(this).hide()
     app.playlist.reset()
 
@@ -60,4 +60,4 @@ $ ->
     'readOnly': true
     'width': 100
     'height': 100
-  $(".num_seconds").knob()
+  $(".knob").knob()

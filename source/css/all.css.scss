@@ -1,13 +1,17 @@
 @charset "utf-8";
 
-body {
+html, body {
+  color: #777;
+  background-color: #333;
+}
+
+.round-box {
   margin: 30px;
   padding: 20px;
   border: 1px solid #444;
-  background-color: #333;
   border-radius: 20px;
   text-align: center;
-  color: #777;
+  position: relative;
 }
 h1 {
   font-size: 38pt;
@@ -98,4 +102,13 @@ h2 {
 .dial {
   color: red;
   z-index: 2000;
+}
+.header {
+  text-align: center;
+}
+.footer {
+  text-align: right;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-right: 30px;
 }

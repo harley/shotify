@@ -22,7 +22,7 @@ class window.PlaylistDrop
       uri = event.dataTransfer.getData('Text')
       console.log "DROPPED: " + uri
       @el.removeClass('over')
-      $('.container').removeClass('before-drop').addClass('after-drop')
+      $('.main-container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
       @el.find('h4').html('Drop Playlist Here')
 
