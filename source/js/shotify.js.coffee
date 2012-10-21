@@ -5,8 +5,9 @@ console.log "Loading Shotify!"
 jQuery.event.props.push("dataTransfer")
 
 window.app = 
+  threshold: ->
+    $(".num_seconds").val()
   setup: ->
-    app.threshold = 6 # number of seconds to play each track
     # Initialize Spotify API
     if typeof(getSpotifyApi) == 'function'
       @sp = getSpotifyApi(1)
@@ -42,6 +43,7 @@ $ ->
       # show progress bar
       $('.progress').show()
       $('#drop-another').show()
+      $('.dial').trigger('configure', {'max': $('.num_seconds').val()})
     else
       alert "Error: Playlist not loaded yet!"
     return false
@@ -54,7 +56,8 @@ $ ->
   # store original img src
   $('#album-art').data('original-src', $('#album-art').attr('src'))
   $(".dial").knob
-    'max': app.threshold
+    'max': app.threshold()
     'readOnly': true
     'width': 100
     'height': 100
+  $(".num_seconds").knob()

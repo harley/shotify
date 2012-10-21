@@ -36,7 +36,7 @@ class window.Playlist
       @renderCurrentTrack()
 
     startTime = new Date().getTime()
-    secondsLeft = @app.threshold
+    secondsLeft = @app.threshold()
     refreshInterval = 1000
 
     @timeouts = []
@@ -66,7 +66,7 @@ class window.Playlist
     @timeouts.push window.setTimeout(playTimer, refreshInterval)
 
   displayTimer: (secondsLeft) ->
-    val = @app.threshold - secondsLeft
+    val = @app.threshold() - secondsLeft
     $('.dial').val(val).trigger('change')
 
   renderCurrentTrack: ->
