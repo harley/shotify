@@ -16,29 +16,31 @@
       _gaq.push(['_setDomainName', 'shotify.us']);
       _gaq.push(['_trackPageview']);
       (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-  </head>
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+</script>
+   </head>
 
-  <body class="<%= page_classes %>">
-    <div class="container-fluid">
-      <div class="header">
-        <div class="logo-container">
-          <%= link_to image_tag("logo_alternate.png"), "spotify:app:shotify" %>
-        </div>
-      </div>
-      <div class="round-box">
-        <%= yield %>
-      </div>
-      <div class="clear:both"><div>
-      <div class="footer">
-        <%= link_to "shotify.us", "http://shotify.us", class: 'label label-inverse' %>
-        <%= link_to "facebook", "http://facebook.com/shotify.us", class: 'label label-info' %>
-        <%= link_to "twitter", "http://twitter.com/shotify", class: 'label label-success' %>
-      </div>
-    </div>
-  </body>
-</html>
+   <body class="<%= page_classes %>">
+     <div class="container-fluid">
+       <div class="header">
+         <div class="logo-container">
+           <%= link_to image_tag("logo_alternate.png"), "spotify:app:shotify" %>
+         </div>
+       </div>
+       <div class="body round-box">
+         <%= yield %>
+         <div class="clear:both"></div>
+       </div>
+       <div class="footer">
+         <div class="container-fluid">
+         <%= link_to "shotify.us", "http://shotify.us", class: 'label label-inverse' %>
+         <%= link_to "facebook", "http://facebook.com/shotify.us", class: 'label label-info' %>
+         <%= link_to "twitter", "http://twitter.com/shotify", class: 'label label-success' %>
+       </div>
+       </div>
+     </div>
+   </body>
+ </html>
