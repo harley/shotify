@@ -13,5 +13,8 @@
     },
     "SupportedLanguages": [
         "en"
+    ],
+    "RequiredPermissions": [
+        "http://www.google-analytics.com", "https://www.google-analytics.com"
     ]
 }
