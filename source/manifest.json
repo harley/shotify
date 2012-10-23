@@ -1,20 +1,20 @@
 {
-    "AcceptedLinkTypes" : [
-        "playlist"
+  "AcceptedLinkTypes" : [
+    "playlist"
     ],
-    "BundleType": "Application",
-    "BundleIdentifier": "shotify",
-    "AppIcon": {
-        "18x18": "img/shotlogo_18.png",
-        "128x128": "img/shotlogo_128.png"
-    },
-    "AppName": {
-        "en": "Shotify"
-    },
-    "SupportedLanguages": [
-        "en"
-    ],
-    "RequiredPermissions": [
-        "http://www.google-analytics.com", "https://www.google-analytics.com"
-    ]
+  "BundleType": "Application",
+  "BundleIdentifier": "shotify",
+  "AppIcon": {
+    "18x18": "img/shotlogo_18.png",
+    "128x128": "img/shotlogo_128.png"
+  },
+  "AppName": {
+    "en": "Shotify"
+  },
+  "SupportedLanguages": [
+    "en"
+  ],
+  "RequiredPermissions": [
+    "http://www.google-analytics.com"
+  ]
 }
