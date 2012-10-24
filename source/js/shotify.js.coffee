@@ -1,7 +1,6 @@
 #= require playlist_drop
 #= require playlist
 
-console.log "Loading Shotify!"
 jQuery.event.props.push("dataTransfer")
 
 window.app = 
@@ -12,13 +11,6 @@ window.app =
     if typeof(getSpotifyApi) == 'function'
       @sp = getSpotifyApi(1)
       @models = @sp.require("sp://import/scripts/api/models")
-      @views = @sp.require("sp://import/scripts/api/views")
-      @ui = @sp.require("sp://import/scripts/ui")
-      @player = @models.player
-      @library = @models.library
-      @application = @models.application
-      # @playerImage = new views.Player()
-      # init playlist drop
 
       @models.player.observe @models.EVENT.CHANGE, (event) =>
         # updatePageWithTrackDetails() if event.data.curtrack
@@ -33,7 +25,8 @@ window.app =
 
 $ ->
   app.setup()
-  $('#play-button').click ->
+  $('#play-button').click (e) ->
+    e.preventDefault()
     if app.playlist
       $('.main-container').addClass('playing')
       # app.playlist.hide()
@@ -41,17 +34,18 @@ $ ->
       # hide play button
       $(this).hide()
       # show progress bar
-      $('.progress').show()
       $('#drop-another').show()
+      # set the threshold before starting
       $('.dial').trigger('configure', {'max': $('.num_seconds').val()})
     else
       alert "Error: Playlist not loaded yet!"
-    return false
+    false
   $('#drop-another').click ->
     # display playlist-dropper and hide current tracks info
     $('.main-container').removeClass('after-drop playing').addClass('before-drop')
     $(this).hide()
     app.playlist.reset()
+    false
 
   # store original img src
   $('#album-art').data('original-src', $('#album-art').attr('src'))

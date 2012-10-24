@@ -5,7 +5,7 @@ class window.PlaylistDrop
     @el = $(selector)
     @el.on 'dragenter', (event) =>
       @el.addClass('over')
-      @el.find('h4').html('Ready?')
+      @el.parent().find('h4').html('Ready?')
 
     @el.on 'dragover', (event) =>
       event.preventDefault()
@@ -14,19 +14,15 @@ class window.PlaylistDrop
       false
 
     @el.on 'dragleave', (event) =>
-      console.log "Drag Leave"
       @el.removeClass('over')
       @el.find('h4').html('Drop Playlist Here')
 
     @el.on 'drop', (event) =>
       uri = event.dataTransfer.getData('Text')
-      console.log "DROPPED: " + uri
       @el.removeClass('over')
       $('.main-container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
       @el.find('h4').html('Drop Playlist Here')
-
-    console.log "Created playlist " + @el.prop('nodeName') + '#' + @el.prop('id')
 
   # provide callback to set current playlist
   watchDropping: (uri) ->

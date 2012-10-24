@@ -8,6 +8,9 @@ html, body {
   margin: 0;
   padding: 0;
 }
+h4 {
+  color: #ccc;
+}
 
 .container-fluid {
   min-height: 100%;
@@ -50,19 +53,15 @@ h2 {
   margin: 0 auto;
 }
 .playlist-dropper {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 #playlist_drop {
   font-style: italic;
-  width: 220px;
   height: 220px;
   background-color: #444;
   border: 5px solid #333;
   border-radius: 30px;
   text-align: center;
   vertical-align: middle;
-  display: table-cell;
   color: #888;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   margin-left: auto;

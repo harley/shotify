@@ -3,43 +3,48 @@ title: Shotify
 ---
 
 <div class="before-drop main-container">
-  <div class="center playlist-dropper">
-    <div id="playlist_drop">
-      <h4>Drop Playlist Here</h4>
+  <div id="drop_page">
+    <div class="playlist-dropper">
+      <h4>Drag and drop a playlist below</h4>
+      <div id="playlist_drop">
+      </div>
     </div>
-  </div>
-  <div class="setting">
-    <label for="num_seconds">
-      How long would you like to each each track for?<br>
-      Use the click wheel to set the duration (in seconds)
-    </label>
-    <input type="text" class="num_seconds knob" value="60" id="num_seconds"
-    data-max="120" data-min="1"
-    data-cursor="true" data-fgColor="#e5a355"/>
+    <div class="setting">
+      <label for="num_seconds">
+        How long would you like to each each track for?<br>
+        Use the click wheel to set the duration (in seconds)
+      </label>
+      <input type="text" class="num_seconds knob" value="60" id="num_seconds"
+      data-max="120" data-min="1"
+      data-cursor="true" data-fgColor="#e5a355"/>
+    </div>
   </div>
   <div style="clear:both"></div>
-  <div id='tracks-info'>
-    <div class="row-fluid">
-      <div class="span6">
-        <div id="album-art-container" class="center">
-          <div class="thumbnail">
-            <%= image_tag "music_shot.jpg", id: 'album-art' %>
+
+  <div id="play_page">
+    <div id='tracks-info'>
+      <div class="row-fluid">
+        <div class="span6">
+          <div id="album-art-container" class="center">
+            <div class="thumbnail">
+              <%= image_tag "music_shot.jpg", id: 'album-art' %>
+            </div>
+          </div>
+          <h4 class="main-line">
+            <span id='current-playlist'></span>
+            <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
+          </h4>
+          <h4 id="current-track">
+          </h4>
+          <div class="clear:both"></div>
+          <input class="dial" id="time-remaining" value='0' input="text" />
+        </div>
+        <div class="span6">
+          <div id="tracks-container">
           </div>
         </div>
-        <h4 class="main-line">
-          <span id='current-playlist'></span>
-          <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
-        </h4>
-        <h4 id="current-track">
-        </h4>
-        <div class="clear:both"></div>
-        <input class="dial" id="time-remaining" value='0' input="text" />
       </div>
-      <div class="span6">
-        <div id="tracks-container">
-        </div>
-      </div>
+      <%= link_to "Play another list", '#', id: 'drop-another', class: 'btn btn-large btn-danger', style: 'display: none' %>
     </div>
-    <%= link_to "Play another list", '#', id: 'drop-another', class: 'btn btn-large btn-danger', style: 'display: none' %>
   </div>
 </div>
