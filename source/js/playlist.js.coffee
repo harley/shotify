@@ -7,6 +7,15 @@ class window.Playlist
     @el = $('<ol></ol>')
     @app.playlist = this
 
+    @multiTracksPlaylist = new @app.models.Playlist()
+    for track in @tracks
+      console.log "adding ", track
+      @multiTracksPlaylist.add track
+
+    @multiTracksPlayer = new @app.views.List @multiTracksPlaylist
+    @multiTracksPlayer.track = null
+    @multiTracksPlayer.context = @multiTracksPlaylist
+
   name: ->
     @object.name
 
@@ -14,11 +23,12 @@ class window.Playlist
     @tracks = []
     console.log "num tracks", @object.length
     for i in [0...@object.length]
-      @tracks.push @object.getTrack(i)
+      @tracks.push @app.models.Track.fromURI @object.getTrack(i).uri
 
   render: ->
-    for track in @tracks
-      @el.append "<li>" + track.name + "</li>"
+    # for track in @tracks
+    #   @el.append "<li>" + track.name + "</li>"
+    @el.append @multiTracksPlayer.node
     this
   playRandom: ->
     @currentTrack = 0
@@ -32,7 +42,7 @@ class window.Playlist
     if track
       console.log "play track ", @currentTrack, track.uri
       # TODO allow playing from other position, not just from start
-      @app.player.playTrack track.uri
+      @app.player.playTrack track.data.uri
       @renderCurrentTrack()
 
     startTime = new Date().getTime()

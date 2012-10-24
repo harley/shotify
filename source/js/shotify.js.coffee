@@ -10,7 +10,9 @@ window.app =
     # Initialize Spotify API
     if typeof(getSpotifyApi) == 'function'
       @sp = getSpotifyApi(1)
-      @models = @sp.require("sp://import/scripts/api/models")
+      @models = @sp.require "sp://import/scripts/api/models"
+      @views = @sp.require "sp://import/scripts/api/views"
+      @player = @models.player
 
       @models.player.observe @models.EVENT.CHANGE, (event) =>
         # updatePageWithTrackDetails() if event.data.curtrack

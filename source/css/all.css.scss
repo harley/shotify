@@ -1,4 +1,7 @@
 @charset "utf-8";
+@import url("sp://import/css/api.css");
+@import url("sp://import/css/adam.scs");
+@import url("sp://import/css/player.css");
 
 html, body {
   color: #777;
@@ -115,12 +118,6 @@ h2 {
   }
 }
 #tracks-container {
-  text-align: left;
-  border: 2px solid #222;
-  height: 350px;
-  overflow: auto;
-  background-color: #444;
-  padding: 10px;
 }
 
 #drop-another {
