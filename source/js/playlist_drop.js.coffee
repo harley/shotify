@@ -19,10 +19,19 @@ class window.PlaylistDrop
 
     @el.on 'drop', (event) =>
       uri = event.dataTransfer.getData('Text')
+
       @el.removeClass('over')
       $('.main-container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
       @el.find('h4').html('Drop Playlist Here')
+
+      playlist = @app.models.Playlist.fromURI uri
+      mosaic = new @app.views.Image(playlist.image)
+      mosaic.node.style.width = '250px'
+      mosaic.node.style.height = '250px'
+      mosaic.node.style.backgroundSize = 'cover'
+      # show mosaic
+      $('#mosaic').html(mosaic.node)
 
   # provide callback to set current playlist
   watchDropping: (uri) ->

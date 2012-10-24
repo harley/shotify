@@ -89,8 +89,8 @@ h2 {
 }
 
 #album-art-container {
-  width: 220px;
-  height: 220px;
+  width: 250px;
+  height: 250px;
   background-color: #444;
   border: 2px solid #888;
   img {
@@ -140,6 +140,16 @@ h2 {
     display: none;
   }
 }
-.sidebar_playing {
+.before-drop {
+  #current-playlist, #mosaic {
+    display: none;
+  }
+}
+.after-drop {
+  #playlist_drop {
+    display: none;
+  }
+}
+.sidebar_playing, #mosaic {
   text-align: center;
 }
