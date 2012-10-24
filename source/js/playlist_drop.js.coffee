@@ -5,7 +5,7 @@ class window.PlaylistDrop
     @el = $(selector)
     @el.on 'dragenter', (event) =>
       @el.addClass('over')
-      @el.parent().find('h4').html('Ready?')
+      @el.find('h4').html('Ready?')
 
     @el.on 'dragover', (event) =>
       event.preventDefault()

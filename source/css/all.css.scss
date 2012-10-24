@@ -55,8 +55,12 @@ h2 {
 .playlist-dropper {
 }
 #playlist_drop {
+  h4 {
+    margin-top: 170px;
+  }
   font-style: italic;
-  height: 220px;
+  height: 360px;
+  width: 360px;
   background-color: #444;
   border: 5px solid #333;
   border-radius: 30px;
@@ -106,7 +110,7 @@ h2 {
   }
 }
 .after-drop {
-  .playlist-dropper, .setting {
+  #album-art-container{
     display: none;
   }
 }
@@ -126,9 +130,27 @@ h2 {
   color: red;
   z-index: 2000;
 }
-.other-settings {
+.setting {
   min-width: 300px;
 }
-.body, .setting {
+.other-settings {
+  width: 300px;
+  margin: 0 auto;
+  &.form-horizontal {
+    .control-label {
+      width: 100px;
+    }
+    .controls {
+      margin-left: 120px;
+    }
+  }
+}
+.body {
   min-width: 600px;
+}
+.time-remaining {
+  display: none;
+}
+.playing .time-remaining {
+  display: block;
 }
