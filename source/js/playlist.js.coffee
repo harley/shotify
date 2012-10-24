@@ -9,8 +9,8 @@ class window.Playlist
 
     @multiTracksPlaylist = new @app.models.Playlist()
     for track in @tracks
-      console.log "adding ", track
       @multiTracksPlaylist.add track
+    console.log "tracks: ", @tracks
 
     @multiTracksPlayer = new @app.views.List @multiTracksPlaylist
     @multiTracksPlayer.track = null
@@ -28,7 +28,7 @@ class window.Playlist
   render: ->
     # for track in @tracks
     #   @el.append "<li>" + track.name + "</li>"
-    @el.append @multiTracksPlayer.node
+    @el.html @multiTracksPlayer.node
     this
   playRandom: ->
     @currentTrack = 0
@@ -81,10 +81,10 @@ class window.Playlist
 
   renderCurrentTrack: ->
     track = @tracks[@currentTrack]
-    $("#current-track").html(track.name + ' by ' + track.album.artist.name)
-    console.log "album cover", track.album.cover
+    $("#current-track").html(track.name + ' by ' + track.data.album.artist.name)
+    console.log "album cover", track.data.album.cover
     # display album art
-    $('#album-art').attr('src', track.album.cover).show()
+    $('#album-art').attr('src', track.data.album.cover).show()
     # display time
     # play track
   reset: ->

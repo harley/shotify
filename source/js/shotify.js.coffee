@@ -30,7 +30,7 @@ $ ->
   $('#play-button').click (e) ->
     e.preventDefault()
     if app.playlist
-      $('.main-container').addClass('playing')
+      $('.main-container').removeClass('after-drop').addClass('playing')
       # app.playlist.hide()
       app.playlist.playRandom()
       # hide play button
@@ -54,6 +54,6 @@ $ ->
   $(".dial").knob
     'max': app.threshold()
     'readOnly': true
-    'width': 100
-    'height': 100
+    'width': 200
+    'height': 200
   $(".knob").knob()

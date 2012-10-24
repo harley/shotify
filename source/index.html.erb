@@ -4,77 +4,80 @@ title: Shotify
 
 <div class="before-drop main-container">
   <div class="row-fluid">
-    <div class="span6">
-      <div id="drop_page">
+    <div class="span4">
+      <div class="sidebar_setup">
         <div class="playlist-dropper">
           <div id="playlist_drop">
-            <h4>Drag and drop a playlist below</h4>
+            <h4>Drop a playlist below</h4>
           </div>
         </div>
-      </div>
-      <div id="album-art-container" class="center">
-        <div class="thumbnail">
-          <%= image_tag "music_shot.jpg", id: 'album-art' %>
+        <h4 class="main-line">
+          <span id='current-playlist'></span>
+          <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
+        </h4>
+        <div class="setting">
+          <div style="text-align:center;min-width: 300px;margin-top:30px">
+            <label for="num_seconds">
+              How long would you like to each each track for?<br>
+              Use the click wheel to set the duration (in seconds)
+            </label>
+            <input type="text" class="num_seconds knob" value="60" id="num_seconds"
+            data-max="120" data-min="1"
+            data-cursor="true" data-fgColor="#e5a355"/>
+          </div>
         </div>
-      </div>
-      <h4 class="main-line">
-        <span id='current-playlist'></span>
-        <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
-      </h4>
-    </div>
-    <div class="span6">
-      <div class="setting">
-        <div style="text-align:center;min-width: 300px;margin-top:30px">
-          <label for="num_seconds">
-            How long would you like to each each track for?<br>
-            Use the click wheel to set the duration (in seconds)
-          </label>
-          <input type="text" class="num_seconds knob" value="60" id="num_seconds"
-          data-max="120" data-min="1"
-          data-cursor="true" data-fgColor="#e5a355"/>
-        </div>
-      </div>
-      <div class="other-settings form-horizontal">
-        <br>
-        <div class="control-group">
-          <label class="control-label">Random order</label>
-          <div class="controls">
-            <div class="btn-group">
-              <a href="#" class="btn btn-mini active">Off</a>
-              <a href="#" class="btn btn-mini">On</a>
+        <div class="other-settings form-horizontal">
+          <br>
+          <div class="control-group">
+            <label class="control-label">Random order</label>
+            <div class="controls">
+              <div class="btn-group">
+                <a href="#" class="btn btn-mini active">Off</a>
+                <a href="#" class="btn btn-mini">On</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label">Interval</label>
-          <div class="controls">
-            <div class="btn-group">
-              <a href="#" class="btn btn-mini active">First</a>
-              <a href="#" class="btn btn-mini">Middle</a>
-              <a href="#" class="btn btn-mini">Last</a>
-              <a href="#" class="btn btn-mini">Random</a>
+          <div class="control-group">
+            <label class="control-label">Interval</label>
+            <div class="controls">
+              <div class="btn-group">
+                <a href="#" class="btn btn-mini active">First</a>
+                <a href="#" class="btn btn-mini">Middle</a>
+                <a href="#" class="btn btn-mini">Last</a>
+                <a href="#" class="btn btn-mini">Random</a>
+              </div>
             </div>
           </div>
+          <div>
+          </div>
         </div>
+      </div>
+      <div class="sidebar_playing">
+        <div id="album-art-container" class="center">
+          <div class="thumbnail">
+            <%= image_tag "music_shot.jpg", id: 'album-art' %>
+          </div>
+        </div>
+        <h4 id="current-track"></h4>
         <div>
-          <h4 id="current-track"></h4>
-          <div class="clear:both"></div>
           <input class="dial" id="time-remaining" value='0' input="text" />
         </div>
+        <%= link_to "Play another list", '#', id: 'drop-another', class: 'btn btn-large btn-danger', style: 'display: none' %>
       </div>
     </div>
-  </div>
-  <div style="clear:both"></div>
-
-  <div id="play_page">
-    <div id='tracks-info'>
-      <div class="row-fluid">
-        <div class="span12">
-          <div id="tracks-container">
+    <div class="span8">
+      <div id='tracks-info'>
+        <div class="row-fluid">
+          <div class="span12">
+            <div id="tracks-container">
+              <div class="sp-list">
+                <div style="height:20px; text-align:center; padding:10px; height: 500px">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <%= link_to "Play another list", '#', id: 'drop-another', class: 'btn btn-large btn-danger', style: 'display: none' %>
     </div>
   </div>
 </div>
