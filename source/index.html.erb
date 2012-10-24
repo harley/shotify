@@ -10,13 +10,46 @@ title: Shotify
       </div>
     </div>
     <div class="setting">
-      <label for="num_seconds">
-        How long would you like to each each track for?<br>
-        Use the click wheel to set the duration (in seconds)
-      </label>
-      <input type="text" class="num_seconds knob" value="60" id="num_seconds"
-      data-max="120" data-min="1"
-      data-cursor="true" data-fgColor="#e5a355"/>
+      <div class="row-fluid">
+        <div class="span6">
+          <div style="text-align:center;min-width: 300px;margin-top:30px">
+            <label for="num_seconds">
+              How long would you like to each each track for?<br>
+              Use the click wheel to set the duration (in seconds)
+            </label>
+            <input type="text" class="num_seconds knob" value="60" id="num_seconds"
+            data-max="120" data-min="1"
+            data-cursor="true" data-fgColor="#e5a355"/>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="other-settings">
+            <br>
+            <br>
+            <br>
+            <div class="control-group">
+              <label class="control-label">Random order</label>
+              <div class="controls">
+                <div class="btn-group">
+                  <a href="#" class="btn active">Off</a>
+                  <a href="#" class="btn">On</a>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Interval</label>
+              <div class="controls">
+                <div class="btn-group">
+                  <a href="#" class="btn active">First</a>
+                  <a href="#" class="btn">Middle</a>
+                  <a href="#" class="btn">Last</a>
+                  <a href="#" class="btn">Random</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div style="clear:both"></div>

@@ -10,6 +10,7 @@ html, body {
 }
 h4 {
   color: #ccc;
+  text-align: center;
 }
 
 .container-fluid {
@@ -37,7 +38,6 @@ h4 {
   padding-bottom: 40px;
   border: 1px solid #444;
   border-radius: 20px;
-  text-align: center;
   position: relative;
 }
 h1 {
@@ -126,4 +126,9 @@ h2 {
   color: red;
   z-index: 2000;
 }
-
+.other-settings {
+  min-width: 300px;
+}
+.body, .setting {
+  min-width: 600px;
+}
