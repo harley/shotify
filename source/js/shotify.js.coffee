@@ -35,8 +35,6 @@ $ ->
       app.playlist.playRandom()
       # hide play button
       $(this).hide()
-      # show progress bar
-      $('#drop-another').show()
       # set the threshold before starting
       $('.dial').trigger('configure', {'max': $('.num_seconds').val()})
     else

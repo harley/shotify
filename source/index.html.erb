@@ -11,11 +11,11 @@ title: Shotify
             <h4>Drop a playlist below</h4>
           </div>
         </div>
-        <div id='mosaic'></div>
-        <h4 class="main-line">
-          <span id='current-playlist'></span>
-          <%= link_to "Play", '#', id: 'play-button', class: 'btn btn-large btn-success', style: 'display: none' %>
-        </h4>
+        <div class="playlist-info">
+          <div id='mosaic'></div>
+          <h4 id='current-playlist'></h4>
+          <%= link_to "Play", '#', id: 'play-button', class: 'sp-button sp-primary' %>
+        </div>
         <div class="setting">
           <div style="text-align:center;min-width: 300px;margin-top:30px">
             <label for="num_seconds">
@@ -63,7 +63,7 @@ title: Shotify
         <div>
           <input class="dial" id="time-remaining" value='0' input="text" />
         </div>
-        <%= link_to "Play another list", '#', id: 'drop-another', class: 'btn btn-large btn-danger', style: 'display: none' %>
+        <%= link_to "Play Another List", '#', id: 'drop-another', class: 'btn btn-large btn-danger' %>
       </div>
     </div>
     <div class="span8">
@@ -72,8 +72,7 @@ title: Shotify
           <div class="span12">
             <div id="tracks-container">
               <div class="sp-list">
-                <div style="height:20px; text-align:center; padding:10px; height: 500px">
-                </div>
+                <div class="placeholder"></div>
               </div>
             </div>
           </div>
