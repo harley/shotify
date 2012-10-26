@@ -11,6 +11,10 @@ html, body {
   margin: 0;
   padding: 0;
   background: image-url('navy_blue.png');
+  overflow: auto;
+}
+.row-fluid {
+  min-width: 850px;
 }
 h4 {
   color: #ccc;
