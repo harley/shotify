@@ -14,7 +14,7 @@ html, body {
   overflow: auto;
 }
 .row-fluid {
-  min-width: 850px;
+  min-width: 820px;
 }
 h4 {
   color: #ccc;
@@ -116,17 +116,17 @@ h2 {
   z-index: 2000;
 }
 .setting {
-  min-width: 300px;
+  min-width: 280px;
 }
 .other-settings {
-  width: 300px;
+  width: 280px;
   margin: 0 auto;
   &.form-horizontal {
     .control-label {
-      width: 100px;
+      width: 94px;
     }
     .controls {
-      margin-left: 120px;
+      margin-left: 105px;
     }
     .control-group {
       margin-bottom: 0;

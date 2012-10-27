@@ -12,22 +12,24 @@
    </head>
 
    <body class="<%= page_classes %>">
-     <div class="container-fluid">
-       <div class="header">
+     <div class="header">
+       <div class="container-fluid">
          <div class="logo-container">
            <%= link_to image_tag("logo_alternate.png"), "spotify:app:shotify" %>
          </div>
        </div>
-       <div class="body">
+     </div>
+     <div class="body">
+       <div class="container-fluid">
          <%= yield %>
          <div class="clear:both"></div>
        </div>
-       <div class="footer">
-         <div class="container-fluid">
+     </div>
+     <div class="footer">
+       <div class="container-fluid">
          <%= link_to "shotify.us", "http://shotify.us", class: 'label label-inverse' %>
          <%= link_to "facebook", "http://facebook.com/shotify.us", class: 'label label-info' %>
          <%= link_to "twitter", "http://twitter.com/shotify", class: 'label label-success' %>
-       </div>
        </div>
      </div>
     <script type="text/javascript">
