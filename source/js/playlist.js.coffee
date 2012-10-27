@@ -1,16 +1,21 @@
 class window.Playlist
   constructor: (uri) ->
     @app = window.app
-    @object = @app.sp.core.getPlaylist(uri)
+    # TODO verify if fromURI is safe to use, otherwise use getPlaylist
+    # @object = @app.sp.core.getPlaylist(uri)
+    @sp_playlist = @app.models.Playlist.fromURI uri
+    console.log @sp_playlist
+    @object = @sp_playlist.data
 
     @loadTracks()
     @el = $('<ol></ol>')
     @app.playlist = this
 
-    @multiTracksPlaylist = new @app.models.Playlist()
-    for track in @tracks
-      @multiTracksPlaylist.add track
+    # @multiTracksPlaylist = new @app.models.Playlist()
+    # for track in @tracks
+    #   @multiTracksPlaylist.add track
     # console.log "tracks: ", @tracks
+    @multiTracksPlaylist = @sp_playlist
 
     @multiTracksPlayer = new @app.views.List @multiTracksPlaylist
     @multiTracksPlayer.track = null
