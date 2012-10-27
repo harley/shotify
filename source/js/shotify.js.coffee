@@ -21,6 +21,12 @@ window.app =
         else
           @pausing = true
       @models.player.playing = false
+
+      # Handle items 'dropped' on app icon
+      @models.application.observe @models.EVENT.LINKSCHANGED, (event) =>
+        if event.links.length > 0
+          @playlist_drop.setupPlaylist event.links[0]
+
     else
       console.log "Sorry -- only work in Spotify"
     @playlist_drop = new PlaylistDrop("#playlist_drop")

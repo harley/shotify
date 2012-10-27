@@ -19,7 +19,9 @@ class window.PlaylistDrop
 
     @el.on 'drop', '#drop_overlay', (event) =>
       uri = event.dataTransfer.getData('Text')
+      @setupPlaylist uri
 
+  setupPlaylist: (uri) ->
       @el.removeClass('over')
       $('.main-container').removeClass('before-drop').addClass('after-drop')
       @watchDropping(uri)
