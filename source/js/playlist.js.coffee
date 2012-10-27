@@ -48,7 +48,7 @@ class window.Playlist
     if track
       console.log "play track ", @currentTrack, track.uri
       # TODO allow playing from other position, not just from start
-      @app.player.playTrack track.data.uri
+      @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
       @renderCurrentTrack()
 
     startTime = new Date().getTime()
