@@ -53,8 +53,18 @@ h2 {
   margin: 0 auto;
 }
 .playlist-dropper {
+  position: relative;
 }
 #playlist_drop {
+  position: relative;
+  #drop_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
   h4 {
     margin-top: 110px;
   }
@@ -116,10 +126,8 @@ h2 {
   z-index: 2000;
 }
 .setting {
-  min-width: 280px;
 }
 .other-settings {
-  width: 280px;
   margin: 0 auto;
   &.form-horizontal {
     .control-label {
