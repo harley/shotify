@@ -38,7 +38,7 @@ $ ->
     if app.playlist
       $('.main-container').removeClass('after-drop').addClass('playing')
       # app.playlist.hide()
-      app.playlist.playRandom()
+      app.playlist.startPlaying()
       # hide play button
       $(this).hide()
       # set the threshold before starting

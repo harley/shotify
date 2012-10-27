@@ -36,19 +36,25 @@ class window.Playlist
     # for track in @tracks
     #   @el.append "<li>" + track.name + "</li>"
     @el.html @multiTracksPlayer.node
-  playRandom: ->
+  startPlaying: ->
+    @playRandom true
+  playRandom: (firstTime) ->
     @currentTrack = 0
-    @playCurrentTrack()
+    @playCurrentTrack(firstTime)
   playNextTrack: ->
     @currentTrack += 1
     @playCurrentTrack()
-  playCurrentTrack: ->
+  playCurrentTrack: (firstTime = false) ->
     # display track name
     track = @tracks[@currentTrack]
     if track
       console.log "play track ", @currentTrack, track.uri
       # TODO allow playing from other position, not just from start
-      @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
+      if firstTime
+        @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
+      else
+        # to take advantage of shuffle feature if used
+        @app.player.next()
       @renderCurrentTrack()
 
     startTime = new Date().getTime()
