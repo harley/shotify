@@ -43,7 +43,6 @@ $ ->
   $('#drop-another').click ->
     # display playlist-dropper and hide current tracks info
     $('.main-container').removeClass('after-drop playing').addClass('before-drop')
-    $(this).hide()
     app.playlist.reset()
     false
 

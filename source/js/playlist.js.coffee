@@ -10,12 +10,14 @@ class window.Playlist
     @multiTracksPlaylist = new @app.models.Playlist()
     for track in @tracks
       @multiTracksPlaylist.add track
-    console.log "tracks: ", @tracks
+    # console.log "tracks: ", @tracks
 
     @multiTracksPlayer = new @app.views.List @multiTracksPlaylist
     @multiTracksPlayer.track = null
     @multiTracksPlayer.context = @multiTracksPlaylist
 
+    @app.models.player.observe @app.models.EVENT.CHANGE, (event) ->
+      console.log("Something changed!", event)
   name: ->
     @object.name
 
@@ -29,7 +31,6 @@ class window.Playlist
     # for track in @tracks
     #   @el.append "<li>" + track.name + "</li>"
     @el.html @multiTracksPlayer.node
-    this
   playRandom: ->
     @currentTrack = 0
     @playCurrentTrack()

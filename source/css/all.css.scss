@@ -190,3 +190,7 @@ input#num_seconds, input#time-remaining {
 .no-focus:focus {
   outline: none;
 }
+.sp-list-headers ol {
+  position: relative;
+  height: 20px;
+}
