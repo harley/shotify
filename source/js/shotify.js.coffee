@@ -14,13 +14,13 @@ window.app =
       @views = @sp.require "sp://import/scripts/api/views"
       @player = @models.player
 
-      @models.player.observe @models.EVENT.CHANGE, (event) =>
+      @player.observe @models.EVENT.CHANGE, (event) =>
         # updatePageWithTrackDetails() if event.data.curtrack
-        if @models.player.playing
+        if @player.playing
           @pausing = false
         else
           @pausing = true
-      @models.player.playing = false
+      @player.playing = false
 
       # Handle items 'dropped' on app icon
       @models.application.observe @models.EVENT.LINKSCHANGED, (event) =>
