@@ -1,5 +1,6 @@
 #= require playlist_drop
 #= require playlist
+#= require setting
 
 jQuery.event.props.push("dataTransfer")
 
@@ -15,6 +16,7 @@ window.app =
       @player = @models.player
 
       @player.observe @models.EVENT.CHANGE, (event) =>
+        console.log "shotify.js detects change", event
         # updatePageWithTrackDetails() if event.data.curtrack
         if @player.playing
           @pausing = false
@@ -30,6 +32,7 @@ window.app =
     else
       console.log "Sorry -- only work in Spotify"
     @playlist_drop = new PlaylistDrop("#playlist_drop")
+    new Setting('.other-settings')
 
 $ ->
   app.setup()

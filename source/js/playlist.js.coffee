@@ -22,7 +22,7 @@ class window.Playlist
     @multiTracksPlayer.context = @multiTracksPlaylist
 
     @app.player.observe @app.models.EVENT.CHANGE, (event) ->
-      console.log("Something changed!", event)
+      console.log("playlist.js detects changes!", event)
   name: ->
     @object.name
 
