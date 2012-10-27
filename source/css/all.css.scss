@@ -176,6 +176,9 @@ h2 {
   .placeholder {
     height: 600px;
   }
+  &:focus {
+    outline: none;
+  }
 }
 input#num_seconds, input#time-remaining {
   font-size: 60px !important;
@@ -183,4 +186,7 @@ input#num_seconds, input#time-remaining {
 .footer_inner {
   margin-top: 20px;
   text-align: right;
+}
+.no-focus:focus {
+  outline: none;
 }
