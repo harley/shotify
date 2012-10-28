@@ -22,6 +22,11 @@ window.app =
           @pausing = false
         else
           @pausing = true
+
+        # reset track whenever a new track is played
+        if event.data.curtrack
+          @secondsLeft = @threshold()
+
       @player.playing = false
 
       # Handle items 'dropped' on app icon

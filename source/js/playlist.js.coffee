@@ -58,7 +58,7 @@ class window.Playlist
       @renderCurrentTrack()
 
     startTime = new Date().getTime()
-    secondsLeft = @app.threshold()
+    @app.secondsLeft = @app.threshold()
     refreshInterval = 1000
 
     @timeouts = []
@@ -68,27 +68,28 @@ class window.Playlist
         # keep track of how long it's pausing
         @timeouts.push setTimeout(pauseTimer, refreshInterval)
       else
-        @timeouts.push(setTimeout playTimer, refreshInterval)
+        @timeouts.push setTimeout(playTimer, refreshInterval)
 
     playTimer = =>
-      if secondsLeft > 0
-        secondsLeft -= 1
-        @displayTimer secondsLeft
+      if @app.secondsLeft > 0
+        @app.secondsLeft -= 1
+        @displayTimer @app.secondsLeft
         if @app.pausing
           # do something
           @timeouts.push setTimeout(pauseTimer, refreshInterval)
         else
           @timeouts.push setTimeout(playTimer, refreshInterval)
+        #displayTimer
       else
         # skip to next song
         # skip song here
         @playNextTrack()
     
-    @displayTimer secondsLeft
+    @displayTimer @app.secondsLeft
     @timeouts.push window.setTimeout(playTimer, refreshInterval)
 
-  displayTimer: (secondsLeft) ->
-    val = @app.threshold() - secondsLeft
+  displayTimer: (seconds) ->
+    val = @app.threshold() - seconds
     $('.dial').val(val).trigger('change')
 
   renderCurrentTrack: ->
