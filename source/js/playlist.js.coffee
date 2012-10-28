@@ -21,6 +21,10 @@ class window.Playlist
     @multiTracksPlayer.track = null
     @multiTracksPlayer.context = @multiTracksPlaylist
 
+    @app.player.observe @app.models.EVENT.CHANGE, (event) =>
+      if event.data.curtrack
+        @renderTrack @app.player.track
+
   name: ->
     @object.name
 
@@ -53,10 +57,8 @@ class window.Playlist
         @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
       else
         # to take advantage of shuffle feature if used
-        @app.player.next()
-
-      track = @app.player.track
-      @renderCurrentTrack()
+        @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
+        # @app.player.next()
 
     startTime = new Date().getTime()
     @app.secondsLeft = @app.threshold()
@@ -93,8 +95,7 @@ class window.Playlist
     val = @app.threshold() - seconds
     $('.dial').val(val).trigger('change')
 
-  renderCurrentTrack: ->
-    track = @tracks[@currentTrack]
+  renderTrack: (track) ->
     $("#current-track").html(track.name + ' by ' + track.data.album.artist.name)
     console.log "album cover", track.data.album.cover
     # display album art
