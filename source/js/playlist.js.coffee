@@ -47,14 +47,15 @@ class window.Playlist
     # display track name
     track = @tracks[@currentTrack]
     if track
-      console.log "play track ", @currentTrack, track.uri
+      console.log "looking at track", @currentTrack, track.uri
       # TODO allow playing from other position, not just from start
       if firstTime
         @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
       else
         # to take advantage of shuffle feature if used
         @app.player.next()
-      
+
+      track = @app.player.track
       @renderCurrentTrack()
 
     startTime = new Date().getTime()
