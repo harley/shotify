@@ -4,8 +4,7 @@ class window.Setting
     @app = window.app
     @el = $(selector)
 
-    $(".setting-buttons").on "click", "a", ->
-      $(this).addClass('btn-info active').siblings().removeClass('btn-info active')
+    $(".setting-buttons > a").click -> $(this).addClass('btn-info active').siblings().removeClass('btn-info active')
 
     $('a#random-off').click => @app.player.shuffle = false
     $('a#random-on').click  => @app.player.shuffle = true
