@@ -21,8 +21,6 @@ class window.Playlist
     @multiTracksPlayer.track = null
     @multiTracksPlayer.context = @multiTracksPlaylist
 
-    @app.player.observe @app.models.EVENT.CHANGE, (event) ->
-      console.log("playlist.js detects changes!", event)
   name: ->
     @object.name
 
@@ -36,6 +34,7 @@ class window.Playlist
     # for track in @tracks
     #   @el.append "<li>" + track.name + "</li>"
     @el.html @multiTracksPlayer.node
+
   startPlaying: ->
     @playRandom true
   playRandom: (firstTime) ->
@@ -55,6 +54,7 @@ class window.Playlist
       else
         # to take advantage of shuffle feature if used
         @app.player.next()
+      
       @renderCurrentTrack()
 
     startTime = new Date().getTime()

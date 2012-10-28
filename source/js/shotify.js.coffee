@@ -16,8 +16,7 @@ window.app =
       @player = @models.player
 
       @player.observe @models.EVENT.CHANGE, (event) =>
-        console.log "shotify.js detects change", event
-        # updatePageWithTrackDetails() if event.data.curtrack
+        # console.log "shotify.js detects change", event
         if @player.playing
           @pausing = false
         else
@@ -37,7 +36,7 @@ window.app =
     else
       console.log "Sorry -- only work in Spotify"
     @playlist_drop = new PlaylistDrop("#playlist_drop")
-    new Setting('.other-settings')
+    @setting = new Setting('.other-settings')
 
 $ ->
   app.setup()
