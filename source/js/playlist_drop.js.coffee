@@ -49,4 +49,4 @@ class window.PlaylistDrop
       # display Play button
       $("#play-button").show()
       # update items in playlist
-      $("#tracks-container #playlist").html(@currentPlaylist.render())
+      @currentPlaylist.render()

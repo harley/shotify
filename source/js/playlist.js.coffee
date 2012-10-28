@@ -8,7 +8,7 @@ class window.Playlist
     @object = @sp_playlist.data
 
     @loadTracks()
-    @el = $('<ol></ol>')
+    @el = $('#playlist')
     @app.playlist = this
 
     # construct temporary playlist
