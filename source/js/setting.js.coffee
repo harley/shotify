@@ -19,7 +19,7 @@ class window.Setting
         @setRandom @app.player.shuffle
 
     @setRandom @app.player.shuffle
-    @setInterval "first"
+    @setInterval "random"
 
   trackURIWithSeek: (track) ->
     offset = @getTrackPlayOffset track
