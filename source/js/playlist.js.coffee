@@ -57,8 +57,8 @@ class window.Playlist
         @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
       else
         # to take advantage of shuffle feature if used
-        @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
-        # @app.player.next()
+        # @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
+        @app.player.next()
 
     startTime = new Date().getTime()
     @app.secondsLeft = @app.threshold()
