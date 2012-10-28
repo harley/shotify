@@ -4,22 +4,19 @@ class window.Playlist
     # TODO verify if fromURI is safe to use, otherwise use getPlaylist
     # @object = @app.sp.core.getPlaylist(uri)
     @sp_playlist = @app.models.Playlist.fromURI uri
-    console.log @sp_playlist
+    console.log 'fromURI', uri, @sp_playlist
     @object = @sp_playlist.data
 
     @loadTracks()
     @el = $('<ol></ol>')
     @app.playlist = this
 
+    # construct temporary playlist
     # @multiTracksPlaylist = new @app.models.Playlist()
     # for track in @tracks
     #   @multiTracksPlaylist.add track
     # console.log "tracks: ", @tracks
     @multiTracksPlaylist = @sp_playlist
-
-    @multiTracksPlayer = new @app.views.List @multiTracksPlaylist
-    @multiTracksPlayer.track = null
-    @multiTracksPlayer.context = @multiTracksPlaylist
 
     @app.player.observe @app.models.EVENT.CHANGE, (event) =>
       if event.data.curtrack
@@ -35,6 +32,9 @@ class window.Playlist
       @tracks.push @app.models.Track.fromURI @object.getTrack(i).uri
 
   render: ->
+    @multiTracksPlayer = new @app.views.List @multiTracksPlaylist
+    @multiTracksPlayer.track = null
+    @multiTracksPlayer.context = @multiTracksPlaylist
     # for track in @tracks
     #   @el.append "<li>" + track.name + "</li>"
     @el.html @multiTracksPlayer.node
@@ -42,7 +42,11 @@ class window.Playlist
   startPlaying: ->
     @playRandom true
   playRandom: (firstTime) ->
-    @currentTrack = 0
+    if @app.player.shuffle
+      @currentTrack = Math.floor Math.random() * @tracks.length
+    else
+      @currentTrack = 0
+
     @playCurrentTrack(firstTime)
   playNextTrack: ->
     @currentTrack += 1
@@ -51,14 +55,15 @@ class window.Playlist
     # display track name
     track = @tracks[@currentTrack]
     if track
-      console.log "looking at track", @currentTrack, track.uri
+      trackURI = @app.setting.trackURIWithSeek track
+      # trackURI = @multiTracksPlaylist.uri
       # TODO allow playing from other position, not just from start
+      console.log "calling play", trackURI, @multiTracksPlaylist.uri, @currentTrack
       if firstTime
-        @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
+        @app.player.play trackURI, @multiTracksPlaylist
       else
         # to take advantage of shuffle feature if used
-        # @app.player.play @multiTracksPlaylist.uri, @multiTracksPlaylist.uri, @currentTrack
-        @app.player.next()
+        @app.player.play trackURI, @multiTracksPlaylist
 
     startTime = new Date().getTime()
     @app.secondsLeft = @app.threshold()

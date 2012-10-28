@@ -14,16 +14,23 @@ class window.Setting
     $('a#interval-random').click => @interval = "random"
 
     @app.player.observe @app.models.EVENT.CHANGE, (event) =>
-      # console.log "settings detect player changes", event.data.shuffle, event
+      console.log "settings detect player changes", event.data.shuffle, event
       if event.data.shuffle
         @setRandom @app.player.shuffle
-      if event.data.curtrack
-        offset = @getTrackPlayOffset @app.player.track
-        console.log "skipping to offset ", offset
-        @app.sp.trackPlayer.seek offset
 
     @setRandom @app.player.shuffle
     @setInterval "first"
+
+  trackURIWithSeek: (track) ->
+    offset = @getTrackPlayOffset track
+    temp = track.uri + @offsetToMinSec(offset)
+    console.log temp
+    temp
+
+  offsetToMinSec: (offset) ->
+    min = Math.floor(offset/60000)
+    sec = Math.floor((offset%60000)/1000)
+    "#" + (if min < 10 then ('0' + min) else min) + ":" + (if sec < 10 then ('0' + sec) else sec)
 
   setRandom: (flag) ->
     if flag 
