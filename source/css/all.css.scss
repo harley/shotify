@@ -8,6 +8,7 @@ html, body {
   background-color: #333;
   position: relative;
   min-height: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   background: image-url('navy_blue.png');
@@ -185,8 +186,9 @@ input#num_seconds, input#time-remaining {
   font-size: 60px !important;
 }
 .footer_inner {
-  margin-top: 20px;
+  margin-top: 35px;
   text-align: right;
+  margin-right: -16px;
 }
 .no-focus:focus {
   outline: none;
