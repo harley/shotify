@@ -20,7 +20,7 @@ class window.Setting
       if event.data.curtrack
         offset = @getTrackPlayOffset @app.player.track
         console.log "skipping to offset ", offset
-        @app.sp.trackPlayer.seek Number(offset)
+        @app.sp.trackPlayer.seek offset
 
     @setRandom @app.player.shuffle
     @setInterval "first"
@@ -37,8 +37,8 @@ class window.Setting
     $("#interval-" + value).click()
 
   getTrackPlayOffset: (track) ->
-    duration    = track.duration
-    sampleDuration = @app.threshold() * 1000 # in milliseconds
+    duration    = track.duration / 1000 # in seconds
+    sampleDuration = @app.threshold() # in seconds
     offset = 0
     console.log "checking interval", @app.setting.interval
     switch @app.setting.interval
@@ -49,4 +49,4 @@ class window.Setting
         max = duration - sampleDuration
         offset = Math.floor Math.random() * max
     console.log "returning offset", offset
-    offset
+    Math.floor(offset) * 1000
