@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import url("sp://import/css/api.css");
-@import url("sp://import/css/adam.scs");
+@import url("sp://import/css/adam.css");
 @import url("sp://import/css/player.css");
 
 html, body {
@@ -65,7 +65,9 @@ h2 {
     z-index: 2;
   }
   h4 {
-    margin-top: 110px;
+    margin-top: 27px;
+    font-size: 50px;
+    line-height: 60px;
   }
   height: 240px;
   width: 240px;
