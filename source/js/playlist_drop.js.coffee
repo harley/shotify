@@ -20,6 +20,7 @@ class window.PlaylistDrop
     @el.on 'drop', '#drop_overlay', (event) =>
       uri = event.dataTransfer.getData('Text')
       @setupPlaylist uri
+      event.preventDefault()
 
   setupPlaylist: (uri) ->
       @el.removeClass('over')
