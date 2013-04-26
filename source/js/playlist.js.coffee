@@ -49,7 +49,10 @@ class window.Playlist
 
     @playCurrentTrack(firstTime)
   playNextTrack: ->
-    @currentTrack += 1
+    if @currentTrack < @object.length - 1
+      @currentTrack += 1
+    else
+      @currentTrack = 1
     @playCurrentTrack()
   playCurrentTrack: (firstTime = false) ->
     # display track name
@@ -63,7 +66,7 @@ class window.Playlist
         @app.player.play trackURI, @multiTracksPlaylist
       else
         # to take advantage of shuffle feature if used
-        @app.player.play trackURI, @multiTracksPlaylist
+        @app.player.next() #play trackURI, @multiTracksPlaylist
 
     startTime = new Date().getTime()
     @app.secondsLeft = @app.threshold()
